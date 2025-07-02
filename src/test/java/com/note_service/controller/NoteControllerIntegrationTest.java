@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 
 import java.util.List;
@@ -31,7 +32,13 @@ public class NoteControllerIntegrationTest {
     public void testGetNotesByPatientId() {
         String patientId = "123"; // adapte selon un patient existant en base ou mocké
 
-        ResponseEntity<List> response = restTemplateWithAuth.getForEntity("/notes/patient/" + patientId, List.class);
+        ResponseEntity<List<Note>> response = restTemplateWithAuth.exchange(
+                "/notes/patient/" + patientId,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {}
+        );
+
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
     }
