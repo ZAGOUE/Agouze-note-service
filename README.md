@@ -47,17 +47,6 @@ Tous les endpoints sont protégés par une authentification **HTTP Basic**.
 
 ---
 
-## 🧪 Données de test (exemples)
-
-```json
-{
-  "patientId": "1",
-  "contenu": "Le patient déclare qu'il se sent très bien. Poids égal ou inférieur au poids recommandé.",
-  "date": "2025-06-19T14:04:07.7759934"
-}
-```
-
----
 
 ## ⚙️ Configuration application.properties
 
@@ -101,7 +90,5 @@ com.note_service
 
 ## 💡 À venir dans les sprints suivants
 
-- Agrégation des notes pour évaluer le risque
-- Communication avec `patient-service` via HTTP
-- Intégration dans l’interface frontale
+
 - Dockerisation et orchestration des services

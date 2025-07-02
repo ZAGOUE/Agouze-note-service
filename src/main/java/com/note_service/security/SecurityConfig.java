@@ -18,8 +18,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults()) // ⚠️ autorise l’auth HTTP Basic
-                .csrf(AbstractHttpConfigurer::disable); // pour simplifier les tests en POST
+                .httpBasic(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }
